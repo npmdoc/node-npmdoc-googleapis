@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"googleapis",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "googleapis",
+    "description": "api documentation for [googleapis (v18.0.0)](https://github.com/google/google-api-nodejs-client#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-googleapis.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-googleapis) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-googleapis.svg)](https://travis-ci.org/npmdoc/node-npmdoc-googleapis)",
     "devDependencies": {
-        "googleapis": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "googleapis": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-googleapis",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-googleapis",
+    "keywords": [
+        "documentation",
+        "googleapis"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_googleapis.js",
+    "name": "npmdoc-googleapis",
+    "nameAlias": "npmdoc_googleapis",
+    "nameOriginal": "npmdoc-googleapis",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-googleapis.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
